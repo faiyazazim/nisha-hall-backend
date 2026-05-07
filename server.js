@@ -50,9 +50,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // ── Twilio Setup (optional) ──
-const twilioClient = process.env.TWILIO_SID
-  ? twilio(process.env.TWILIO_SID, process.env.TWILIO_TOKEN)
-  : null;
+const twilioClient = twilio(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
 
 // ── Booking Route ──
 app.post('/api/booking', async (req, res) => {
