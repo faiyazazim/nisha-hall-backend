@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nisha Marriage Hall</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-dark: #9a7a2e;
+    --deep: #1a0a00;
+    --rich: #2d1400;
+    --cream: #fdf6e3;
+    --cream-dark: #f0e0b0;
+    --maroon: #6b0f1a;
+    --text: #3a1a00;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--deep) 0%, var(--maroon) 50%, #3a0800 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 2rem;
+    overflow: hidden;
+  }
+  .hero::before {
+    content:'';
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(201,168,76,0.18) 0%, transparent 70%);
+  }
+  .mandala {
+    position:absolute; width:600px; height:600px; opacity:.08;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='90' fill='none' stroke='%23c9a84c' stroke-width='1'/%3E%3Ccircle cx='100' cy='100' r='70' fill='none' stroke='%23c9a84c' stroke-width='1'/%3E%3Ccircle cx='100' cy='100' r='50' fill='none' stroke='%23c9a84c' stroke-width='1'/%3E%3Ccircle cx='100' cy='100' r='30' fill='none' stroke='%23c9a84c' stroke-width='1'/%3E%3Cline x1='10' y1='100' x2='190' y2='100' stroke='%23c9a84c' stroke-width='.5'/%3E%3Cline x1='100' y1='10' x2='100' y2='190' stroke='%23c9a84c' stroke-width='.5'/%3E%3Cline x1='27' y1='27' x2='173' y2='173' stroke='%23c9a84c' stroke-width='.5'/%3E%3Cline x1='173' y1='27' x2='27' y2='173' stroke='%23c9a84c' stroke-width='.5'/%3E%3C/svg%3E") center/contain no-repeat;
+    animation: spin 60s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .hero-tag {
+    font-family:'Raleway', sans-serif;
+    letter-spacing:.4em; font-size:.75rem; color:var(--gold-light);
+    text-transform:uppercase; margin-bottom:1.2rem;
+    animation: fadeUp .8s ease both;
+  }
+  .hero h1 {
+    font-family:'Playfair Display', serif;
+    font-size: clamp(2.8rem, 8vw, 6rem);
+    color: var(--gold);
+    line-height:1.1;
+    text-shadow: 0 4px 30px rgba(201,168,76,0.4);
+    animation: fadeUp .8s .2s ease both;
+  }
+  .hero h1 span { font-style:italic; color:var(--gold-light); }
+  .hero-sub {
+    margin-top:1rem;
+    font-size:clamp(1rem,2.5vw,1.4rem);
+    color:rgba(253,246,227,0.75);
+    font-weight:300; letter-spacing:.05em;
+    animation: fadeUp .8s .4s ease both;
+  }
+  .hero-divider {
+    margin:2rem auto; width:120px; height:2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation: fadeUp .8s .5s ease both;
+  }
+  .hero-btns {
+    display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;
+    animation: fadeUp .8s .6s ease both;
+  }
+  .btn {
+    padding:.85rem 2.2rem; border:none; cursor:pointer;
+    font-family:'Raleway',sans-serif; font-size:.85rem;
+    letter-spacing:.15em; text-transform:uppercase; text-decoration:none;
+    transition: all .3s;
+  }
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: var(--deep);
+    box-shadow: 0 8px 24px rgba(201,168,76,0.4);
+  }
+  .btn-gold:hover { transform:translateY(-3px); box-shadow:0 14px 32px rgba(201,168,76,0.55); }
+  .btn-outline {
+    background:transparent; color:var(--gold-light);
+    border:1.5px solid var(--gold);
+  }
+  .btn-outline:hover { background:rgba(201,168,76,.12); }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(22px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(26,10,0,0.92); backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(201,168,76,.2);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:.9rem 2.5rem;
+  }
+  .nav-logo {
+    font-family:'Playfair Display',serif;
+    font-size:1.3rem; color:var(--gold); letter-spacing:.05em;
+  }
+  .nav-links { display:flex; gap:2rem; list-style:none; }
+  .nav-links a {
+    color:var(--cream-dark); text-decoration:none;
+    font-family:'Raleway',sans-serif; font-size:.78rem;
+    letter-spacing:.2em; text-transform:uppercase;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color:var(--gold); }
+
+  /* ── SECTIONS ── */
+  section { padding:5rem 1.5rem; }
+
+  .section-label {
+    font-family:'Raleway',sans-serif; letter-spacing:.4em;
+    font-size:.7rem; text-transform:uppercase; color:var(--gold);
+    margin-bottom:.6rem;
+  }
+  .section-title {
+    font-family:'Playfair Display',serif;
+    font-size:clamp(2rem,5vw,3.2rem); color:var(--maroon);
+    margin-bottom:.5rem;
+  }
+  .section-title span { font-style:italic; color:var(--gold-dark); }
+  .section-divider {
+    width:80px; height:2px; margin:1rem 0 2.5rem;
+    background:linear-gradient(90deg,var(--gold),transparent);
+  }
+
+  .container { max-width:1100px; margin:0 auto; }
+
+  /* ── ABOUT ── */
+  #about { background:var(--cream); }
+  .about-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center;
+  }
+  .about-text p { font-size:1.15rem; line-height:1.85; color:#5a3010; margin-bottom:1rem; }
+  .about-stats { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+  .stat-card {
+    background:linear-gradient(135deg,var(--maroon),#3a0800);
+    color:var(--gold-light); padding:1.5rem; text-align:center;
+    border:1px solid rgba(201,168,76,.25);
+  }
+  .stat-card .num { font-size:2.5rem; font-family:'Playfair Display',serif; color:var(--gold); }
+  .stat-card .lbl { font-family:'Raleway',sans-serif; font-size:.72rem; letter-spacing:.2em; margin-top:.3rem; }
+
+  /* ── BOOKING ── */
+  #booking { background: linear-gradient(160deg,#1a0a00,#2d0a00); }
+  #booking .section-title { color:var(--gold); }
+  #booking .section-label { color:var(--gold-light); }
+  .booking-card {
+    background:rgba(253,246,227,.04); border:1px solid rgba(201,168,76,.2);
+    padding:2.5rem; max-width:700px; margin:0 auto;
+    backdrop-filter:blur(8px);
+  }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:1.2rem; }
+  .form-group { display:flex; flex-direction:column; gap:.4rem; }
+  .form-group label {
+    font-family:'Times New Roman', Times, serif; font-size:1rem;
+    font-weight:600; letter-spacing:.05em; color:var(--gold-light);
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    background:rgba(255,255,255,.06); border:1px solid rgba(201,168,76,.3);
+    color:var(--cream); padding:.8rem 1rem;
+    font-family:'Times New Roman', Times, serif;
+    font-size:1rem; outline:none; transition:border .2s;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder {
+    font-family:'Times New Roman', Times, serif; color:rgba(253,246,227,.4);
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color:var(--gold);
+  }
+  .form-group select option { background:#2d0a00; color:var(--cream); }
+  .form-group textarea { resize:vertical; min-height:90px; }
+  .booking-note {
+    font-family:'Times New Roman', Times, serif; font-size:.88rem;
+    color:rgba(232,201,122,.6); margin-top:1.2rem; text-align:center;
+  }
+
+  /* ── COST ── */
+  #cost { background:var(--cream); }
+  .cost-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; }
+  .cost-card {
+    border:1px solid var(--gold-dark); padding:2rem;
+    background:#fff; position:relative; overflow:hidden;
+    transition:transform .3s, box-shadow .3s;
+  }
+  .cost-card:hover { transform:translateY(-6px); box-shadow:0 20px 40px rgba(107,15,26,.15); }
+  .cost-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:4px;
+    background:linear-gradient(90deg,var(--maroon),var(--gold));
+  }
+  .cost-tag {
+    font-family:'Raleway',sans-serif; font-size:.68rem;
+    letter-spacing:.25em; text-transform:uppercase; color:var(--gold-dark);
+    margin-bottom:.5rem;
+  }
+  .cost-name { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--maroon); margin-bottom:.4rem; }
+  .cost-price { font-size:2.4rem; font-weight:700; color:var(--gold-dark); margin-bottom:1rem; }
+  .cost-price span { font-size:1rem; color:#888; font-weight:400; }
+  .cost-features { list-style:none; }
+  .cost-features li {
+    padding:.45rem 0; border-bottom:1px solid #f0e0b0;
+    font-size:1rem; color:#5a3010;
+    display:flex; align-items:center; gap:.5rem;
+  }
+  .cost-features li::before { content:'✦'; color:var(--gold); font-size:.6rem; }
+  .badge {
+    position:absolute; top:1rem; right:1rem;
+    background:var(--maroon); color:var(--gold-light);
+    font-family:'Raleway',sans-serif; font-size:.6rem;
+    letter-spacing:.2em; padding:.3rem .7rem; text-transform:uppercase;
+  }
+
+  /* ── DECOR ── */
+  #decor { background: #fdf0dc; }
+  .decor-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
+  .decor-card {
+    background:#fff; border:1px solid var(--cream-dark);
+    padding:1.8rem; text-align:center;
+    transition:transform .3s;
+    position:relative; overflow:hidden;
+  }
+  .decor-card:hover { transform:translateY(-4px); }
+  .decor-icon { font-size:2.6rem; margin-bottom:.8rem; }
+  .decor-title {
+    font-family:'Playfair Display',serif;
+    font-size:1.25rem; color:var(--maroon); margin-bottom:.6rem;
+  }
+  .decor-list { list-style:none; text-align:left; }
+  .decor-list li {
+    padding:.3rem 0; font-size:.95rem; color:#5a3010;
+    border-bottom:1px dashed #e8d8a0;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .decor-list li .qty {
+    font-family:'Raleway',sans-serif; font-size:.7rem;
+    color:var(--gold-dark); letter-spacing:.1em;
+  }
+
+  /* ── UTENSILS ── */
+  #utensils { background:linear-gradient(160deg,#2d1400,#1a0a00); }
+  #utensils .section-title { color:var(--gold); }
+  #utensils .section-label { color:var(--gold-light); }
+  .utensil-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; }
+  .utensil-card {
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(201,168,76,.2); padding:1.8rem;
+  }
+  .utensil-header {
+    display:flex; align-items:center; gap:.8rem;
+    margin-bottom:1.2rem; padding-bottom:.8rem;
+    border-bottom:1px solid rgba(201,168,76,.2);
+  }
+  .utensil-icon { font-size:1.8rem; }
+  .utensil-title {
+    font-family:'Playfair Display',serif;
+    font-size:1.2rem; color:var(--gold);
+  }
+  .utensil-table { width:100%; border-collapse:collapse; }
+  .utensil-table tr { border-bottom:1px solid rgba(201,168,76,.1); }
+  .utensil-table td {
+    padding:.5rem .3rem; font-size:.95rem;
+    color:rgba(253,246,227,.8);
+  }
+  .utensil-table td:last-child {
+    text-align:right; color:var(--gold-light);
+    font-family:'Raleway',sans-serif; font-size:.75rem;
+  }
+
+  /* ── DIESEL BURN ── */
+  #diesel { background:#fff8ee; }
+  .diesel-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; }
+  .diesel-card {
+    border-left:4px solid var(--gold);
+    padding:1.5rem 1.8rem; background:#fff;
+    box-shadow:0 4px 16px rgba(107,15,26,.08);
+  }
+  .diesel-card h3 {
+    font-family:'Playfair Display',serif;
+    font-size:1.2rem; color:var(--maroon); margin-bottom:.6rem;
+  }
+  .diesel-item {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:.4rem 0; border-bottom:1px solid #f0e0b0;
+    font-size:.95rem; color:#5a3010;
+  }
+  .diesel-item .cost { font-weight:600; color:var(--gold-dark); font-family:'Raleway',sans-serif; }
+  .diesel-total {
+    display:flex; justify-content:space-between;
+    margin-top:.8rem; padding-top:.6rem;
+    font-family:'Playfair Display',serif; font-size:1.05rem;
+    color:var(--maroon); border-top:2px solid var(--gold);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background:var(--deep);
+    color:rgba(253,246,227,.55);
+    text-align:center; padding:3rem 1.5rem;
+    font-family:'Raleway',sans-serif; font-size:.8rem; letter-spacing:.1em;
+  }
+  footer .f-logo {
+    font-family:'Playfair Display',serif;
+    font-size:1.8rem; color:var(--gold); margin-bottom:.5rem;
+  }
+  footer p { margin:.3rem 0; }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:700px){
+    .about-grid,.form-row { grid-template-columns:1fr; }
+    nav { padding:.8rem 1rem; }
+    .nav-links { gap:1rem; }
+  }
+  /* ── CONFIRMATION POPUP ── */
+  .popup-overlay {
+    display:none; position:fixed; inset:0; z-index:999;
+    background:rgba(0,0,0,0.75); backdrop-filter:blur(4px);
+    align-items:center; justify-content:center;
+  }
+  .popup-overlay.active { display:flex; }
+  .popup-box {
+    background:linear-gradient(160deg,#2d1400,#1a0a00);
+    border:1px solid var(--gold);
+    padding:3rem 2.5rem; max-width:460px; width:90%;
+    text-align:center; animation: popIn .4s ease;
+  }
+  @keyframes popIn {
+    from { transform:scale(.85); opacity:0; }
+    to   { transform:scale(1);   opacity:1; }
+  }
+  .popup-icon { font-size:3.5rem; margin-bottom:1rem; }
+  .popup-box h3 {
+    font-family:'Playfair Display',serif;
+    font-size:1.8rem; color:var(--gold); margin-bottom:.6rem;
+  }
+  .popup-box p {
+    font-family:'Times New Roman',Times,serif;
+    color:rgba(253,246,227,.8); font-size:1rem; line-height:1.7;
+    margin-bottom:1.5rem;
+  }
+  .popup-id {
+    font-family:'Raleway',sans-serif; font-size:.8rem;
+    color:var(--gold-light); letter-spacing:.1em; margin-bottom:1.5rem;
+  }
+  .popup-close {
+    background:linear-gradient(135deg,var(--gold-dark),var(--gold));
+    color:var(--deep); border:none; cursor:pointer;
+    padding:.8rem 2.5rem; font-family:'Raleway',sans-serif;
+    font-size:.85rem; letter-spacing:.15em; text-transform:uppercase;
+  }
+  .popup-close:hover { opacity:.9; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">✦ Nisha Hall</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#booking">Booking</a></li>
+    <li><a href="#cost">Cost</a></li>
+    <li><a href="#decor">Decor</a></li>
+    <li><a href="#utensils">Utensils</a></li>
+    <li><a href="#diesel">Generator</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="mandala"></div>
+  <p class="hero-tag">✦ Est. 2020 · Barharwa ✦</p>
+  <h1>Nisha <span>Marriage</span> Hall</h1>
+  <p class="hero-sub">Where Every Celebration Becomes a Timeless Memory</p>
+  <div class="hero-divider"></div>
+  <div class="hero-btns">
+    <a href="#booking" class="btn btn-gold">Book Your Date</a>
+    <a href="#cost" class="btn btn-outline">View Packages</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label">✦ About Us</p>
+        <h2 class="section-title">A Venue Built for <span>Royal Celebrations</span></h2>
+        <div class="section-divider"></div>
+        <p>Nisha Marriage Hall is a premium wedding and event venue offering spacious banquet halls, beautiful garden spaces, and complete event management — from decoration to catering utensils and power backup.</p>
+        <p>We take care of every detail so you can cherish every moment. Our experienced team ensures a seamless, joyful celebration for you and your guests.</p>
+        <br/>
+        <a href="#booking" class="btn btn-gold">Reserve Now</a>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card"><div class="num">6+</div><div class="lbl">Years of Service</div></div>
+        <div class="stat-card"><div class="num">2500</div><div class="lbl">Guest Capacity</div></div>
+        <div class="stat-card"><div class="num">400+</div><div class="lbl">Events Hosted</div></div>
+        <div class="stat-card"><div class="num">4.9★</div><div class="lbl">Average Rating</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="container">
+    <p class="section-label">✦ Reserve Your Date</p>
+    <h2 class="section-title" style="color:var(--gold)">Book the <span style="color:var(--gold-light)">Hall</span></h2>
+    <div class="section-divider" style="background:linear-gradient(90deg,var(--gold),transparent)"></div>
+    <div class="booking-card">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Bride's Name</label>
+          <input type="text" id="bride_name" placeholder="Enter name"/>
+        </div>
+        <div class="form-group">
+          <label>Groom's Name</label>
+          <input type="text" id="groom_name" placeholder="Enter name"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Event Date</label>
+          <input type="date" id="event_date"/>
+        </div>
+        <div class="form-group">
+          <label>Event Type</label>
+          <select id="event_type">
+            <option>Wedding Ceremony</option>
+            <option>Reception</option>
+            <option>Engagement</option>
+            <option>Mehndi / Sangeet</option>
+            <option>Birthday / Anniversary</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Expected Guests</label>
+          <input type="number" id="guests" placeholder="e.g. 500"/>
+        </div>
+        <div class="form-group">
+          <label>Contact Number</label>
+          <input type="tel" id="contact" placeholder="+91 XXXXX XXXXX"/>
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:1.2rem">
+        <label>Special Requirements</label>
+        <textarea id="special_req" placeholder="Mention any special decoration, catering, or arrangements..."></textarea>
+      </div>
+      <button class="btn btn-gold" id="bookingBtn" onclick="submitBooking()" style="width:100%;font-size:.9rem;padding:1rem">✦ Confirm Booking Request</button>
+      <p class="booking-note">Our team will call you within 24 hours to confirm your booking. Advance payment required to block date.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COST / PACKAGES -->
+<section id="cost">
+  <div class="container">
+    <p class="section-label">✦ Packages & Pricing</p>
+    <h2 class="section-title">Hall <span>Cost</span> Plans</h2>
+    <div class="section-divider"></div>
+    <div class="cost-grid">
+
+      <div class="cost-card">
+        <div class="cost-tag">Basic</div>
+        <div class="cost-name">Silver Plan</div>
+        <div class="cost-price">₹30,000 <span>/ event</span></div>
+        <ul class="cost-features">
+          <li>Up to 500 Guests</li>
+          <li>Hall rental (8 hours)</li>
+          <li>Basic floral decoration</li>
+          <li>Plastic chairs & tables</li>
+          <li>Basic lighting setup</li>
+          <li>Parking for 50 vehicles</li>
+          <li>1 Generator (15 KVA)</li>
+        </ul>
+      </div>
+
+      <div class="cost-card">
+        <div class="badge">Most Popular</div>
+        <div class="cost-tag">Standard</div>
+        <div class="cost-name">Gold Plan</div>
+        <div class="cost-price">₹50,000 <span>/ event</span></div>
+        <ul class="cost-features">
+          <li>Up to 1200 Guests</li>
+          <li>Hall + Garden (12 hours)</li>
+          <li>Premium floral & theme decor</li>
+          <li>Cushioned chairs & tables</li>
+          <li>Stage with backdrop</li>
+          <li>DJ & sound system</li>
+          <li>Catering utensils included</li>
+          <li>2 Generators (30 KVA)</li>
+          <li>Parking for 150 vehicles</li>
+        </ul>
+      </div>
+
+      <div class="cost-card">
+        <div class="cost-tag">Premium</div>
+        <div class="cost-name">Diamond Plan</div>
+        <div class="cost-price">₹80,000 <span>/ event</span></div>
+        <ul class="cost-features">
+          <li>Up to 2500 Guests</li>
+          <li>Full venue (16 hours)</li>
+          <li>Royal theme full decoration</li>
+          <li>Royal seating arrangement</li>
+          <li>Bridal suite room</li>
+          <li>Fireworks & flower shower</li>
+          <li>Full catering utensils set</li>
+          <li>3 Generators (75 KVA)</li>
+          <li>Dedicated event manager</li>
+          <li>Photography setup area</li>
+        </ul>
+      </div>
+
+    </div>
+    <p style="margin-top:1.5rem;color:#888;font-size:.9rem;text-align:center">* GST applicable. Catering cost separate. Prices may vary on dates & season.</p>
+  </div>
+</section>
+
+<!-- DECORATION -->
+<section id="decor">
+  <div class="container">
+    <p class="section-label">✦ Decoration Items</p>
+    <h2 class="section-title">What We <span>Decorate</span> With</h2>
+    <div class="section-divider"></div>
+    <div class="decor-grid">
+
+      <div class="decor-card">
+        <div class="decor-icon">🌸</div>
+        <div class="decor-title">Floral Decoration</div>
+        <ul class="decor-list">
+          <li>Marigold garlands <span class="qty">50 strings</span></li>
+          <li>Rose petals (loose) <span class="qty">10 kg</span></li>
+          <li>Lotus / Gerbera bouquets <span class="qty">30 pcs</span></li>
+          <li>Flower ceiling canopy <span class="qty">1 set</span></li>
+          <li>Jasmine varmala <span class="qty">2 sets</span></li>
+          <li>Floral pathway <span class="qty">50 ft</span></li>
+        </ul>
+      </div>
+
+      <div class="decor-card">
+        <div class="decor-icon">🪔</div>
+        <div class="decor-title">Lighting & Ambience</div>
+        <ul class="decor-list">
+          <li>LED fairy string lights <span class="qty">200 mtrs</span></li>
+          <li>Paper lanterns <span class="qty">40 pcs</span></li>
+          <li>Candle holders <span class="qty">60 pcs</span></li>
+          <li>Spotlights (stage) <span class="qty">8 pcs</span></li>
+          <li>Neon name sign <span class="qty">1 pc</span></li>
+          <li>Twinkling tree lights <span class="qty">4 trees</span></li>
+        </ul>
+      </div>
+
+      <div class="decor-card">
+        <div class="decor-icon">🎊</div>
+        <div class="decor-title">Stage & Mandap</div>
+        <ul class="decor-list">
+          <li>Mandap pillars <span class="qty">4 pcs</span></li>
+          <li>Backdrop curtain <span class="qty">20×12 ft</span></li>
+          <li>Stage carpet (red) <span class="qty">300 sq ft</span></li>
+          <li>Bridal throne chairs <span class="qty">2 pcs</span></li>
+          <li>Silk draping fabric <span class="qty">50 mtrs</span></li>
+          <li>Floral arch (entrance) <span class="qty">1 pc</span></li>
+        </ul>
+      </div>
+
+      <div class="decor-card">
+        <div class="decor-icon">🎈</div>
+        <div class="decor-title">Balloons & Hangings</div>
+        <ul class="decor-list">
+          <li>Latex balloons <span class="qty">500 pcs</span></li>
+          <li>Foil letter balloons <span class="qty">20 pcs</span></li>
+          <li>Balloon arch kits <span class="qty">4 sets</span></li>
+          <li>Paper fans / pom poms <span class="qty">30 pcs</span></li>
+          <li>Tassel garlands <span class="qty">20 strings</span></li>
+          <li>Ribbon curtain wall <span class="qty">2 walls</span></li>
+        </ul>
+      </div>
+
+      <div class="decor-card">
+        <div class="decor-icon">🪑</div>
+        <div class="decor-title">Furniture & Linen</div>
+        <ul class="decor-list">
+          <li>Banquet chairs <span class="qty">1000 pcs</span></li>
+          <li>Round dining tables <span class="qty">120 pcs</span></li>
+          <li>Table cloths (satin) <span class="qty">120 pcs</span></li>
+          <li>Chair sashes / covers <span class="qty">1000 pcs</span></li>
+          <li>Sofa set (VIP lounge) <span class="qty">3 sets</span></li>
+          <li>Centerpiece vases <span class="qty">120 pcs</span></li>
+        </ul>
+      </div>
+
+      <div class="decor-card">
+        <div class="decor-icon">✨</div>
+        <div class="decor-title">Special Effects</div>
+        <ul class="decor-list">
+          <li>Cold spark machine <span class="qty">2 pcs</span></li>
+          <li>Smoke / fog machine <span class="qty">1 pc</span></li>
+          <li>Flower shower setup <span class="qty">1 set</span></li>
+          <li>Mirror ball (disco) <span class="qty">2 pcs</span></li>
+          <li>Welcome gate with lights <span class="qty">1 pc</span></li>
+          <li>Confetti cannon <span class="qty">4 pcs</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- UTENSILS FOR FOOD -->
+<section id="utensils">
+  <div class="container">
+    <p class="section-label">✦ Food Service</p>
+    <h2 class="section-title" style="color:var(--gold)">Catering <span style="color:var(--gold-light)">Utensils</span></h2>
+    <div class="section-divider" style="background:linear-gradient(90deg,var(--gold),transparent)"></div>
+    <div class="utensil-grid">
+
+      <div class="utensil-card">
+        <div class="utensil-header">
+          <div class="utensil-icon">🍽️</div>
+          <div class="utensil-title">Serving Utensils</div>
+        </div>
+        <table class="utensil-table">
+          <tr><td>Large Serving Bowls (Steel)</td><td>80 pcs</td></tr>
+          <tr><td>Serving Spoons (long)</td><td>60 pcs</td></tr>
+          <tr><td>Serving Tongs</td><td>30 pcs</td></tr>
+          <tr><td>Ladles (small/large)</td><td>40 pcs</td></tr>
+          <tr><td>Dal Serving Pots</td><td>20 pcs</td></tr>
+          <tr><td>Chafing Dishes (buffet)</td><td>30 pcs</td></tr>
+          <tr><td>Rice Serving Containers</td><td>15 pcs</td></tr>
+        </table>
+      </div>
+
+      <div class="utensil-card">
+        <div class="utensil-header">
+          <div class="utensil-icon">🥘</div>
+          <div class="utensil-title">Cooking Vessels</div>
+        </div>
+        <table class="utensil-table">
+          <tr><td>Patila / Deg (large)</td><td>10 pcs</td></tr>
+          <tr><td>Kadhai (frying pan)</td><td>8 pcs</td></tr>
+          <tr><td>Pressure Cookers (20L)</td><td>6 pcs</td></tr>
+          <tr><td>Tawa (flat griddle)</td><td>6 pcs</td></tr>
+          <tr><td>Gas Burner Stoves</td><td>8 sets</td></tr>
+          <tr><td>Tandoor / Roti Maker</td><td>2 sets</td></tr>
+          <tr><td>Steam Table Units</td><td>4 sets</td></tr>
+        </table>
+      </div>
+
+      <div class="utensil-card">
+        <div class="utensil-header">
+          <div class="utensil-icon">🥣</div>
+          <div class="utensil-title">Guest Crockery</div>
+        </div>
+        <table class="utensil-table">
+          <tr><td>Dinner Plates (steel/melamine)</td><td>1500 pcs</td></tr>
+          <tr><td>Katori / Small Bowls</td><td>3000 pcs</td></tr>
+          <tr><td>Glasses (water)</td><td>2000 pcs</td></tr>
+          <tr><td>Dessert Bowls</td><td>1500 pcs</td></tr>
+          <tr><td>Spoons (eating)</td><td>2000 pcs</td></tr>
+          <tr><td>Trays / Thali</td><td>100 pcs</td></tr>
+          <tr><td>Tissue / Napkin holders</td><td>120 pcs</td></tr>
+        </table>
+      </div>
+
+      <div class="utensil-card">
+        <div class="utensil-header">
+          <div class="utensil-icon">☕</div>
+          <div class="utensil-title">Beverages & Sweets</div>
+        </div>
+        <table class="utensil-table">
+          <tr><td>Tea Urns (large)</td><td>5 pcs</td></tr>
+          <tr><td>Tea Cups & Saucers</td><td>500 pcs</td></tr>
+          <tr><td>Juice Dispensers</td><td>6 pcs</td></tr>
+          <tr><td>Sweet Boxes / Trays</td><td>50 pcs</td></tr>
+          <tr><td>Ice Cream Scooper</td><td>10 pcs</td></tr>
+          <tr><td>Water Dispensers (20L)</td><td>10 pcs</td></tr>
+          <tr><td>Insulated Food Carriers</td><td>20 pcs</td></tr>
+        </table>
+      </div>
+
+    </div>
+    <p style="margin-top:1.5rem;color:rgba(253,246,227,.5);font-family:'Raleway',sans-serif;font-size:.8rem;text-align:center;letter-spacing:.05em">All utensils are cleaned, sanitized, and quality-checked before every event.</p>
+  </div>
+</section>
+
+<!-- DIESEL / GENERATOR BURN -->
+<section id="diesel">
+  <div class="container">
+    <p class="section-label">✦ Power Backup</p>
+    <h2 class="section-title">Generator & <span>Diesel Cost</span></h2>
+    <div class="section-divider"></div>
+    <p style="color:#5a3010;margin-bottom:2rem;font-size:1.05rem">We provide uninterrupted power backup via industrial diesel generators. Cost is calculated based on KVA load and hours of usage.</p>
+    <div class="diesel-grid">
+      <div class="diesel-card">
+        <h3>🔋 15 KVA Generator</h3>
+        <div style="height:120px"></div>
+      </div>
+      <div class="diesel-card">
+        <h3>⚡ 30 KVA Generator</h3>
+        <div style="height:120px"></div>
+      </div>
+      <div class="diesel-card">
+        <h3>🏭 75 KVA Generator</h3>
+        <div style="height:120px"></div>
+      </div>
+      <div class="diesel-card">
+        <h3>📋 Additional Notes</h3>
+        <div style="height:120px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIRMATION POPUP -->
+<div class="popup-overlay" id="confirmPopup">
+  <div class="popup-box">
+    <div class="popup-icon">🎊</div>
+    <h3>Booking Requested!</h3>
+    <p>Thank you! Your booking request has been received. Our team at <strong>Nisha Marriage Hall</strong> will call you within <strong>24 hours</strong> to confirm your date.</p>
+    <div class="popup-id" id="popupBookingId"></div>
+    <button class="popup-close" onclick="document.getElementById('confirmPopup').classList.remove('active')">Close</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">✦ Nisha Marriage Hall</div>
+  <p>BSK College Road, Barharwa Jhikitia Road, Dist. Sahebganj – 816101, Jharkhand</p>
+  <p>📞 +91 8002808580 &nbsp;|&nbsp; 📧 nisha.hall@email.com</p>
+  <p style="margin-top:1.2rem;font-size:.72rem;opacity:.4">© 2026 Nisha Marriage Hall. All rights reserved.</p>
+</footer>
+
+<script>
+  // ⚠️ Replace this URL with your actual hosted backend URL
+  const BACKEND_URL = 'http://localhost:3000/api/booking';
+
+  async function submitBooking() {
+    const bride_name  = document.getElementById('bride_name').value.trim();
+    const groom_name  = document.getElementById('groom_name').value.trim();
+    const event_date  = document.getElementById('event_date').value;
+    const event_type  = document.getElementById('event_type').value;
+    const guests      = document.getElementById('guests').value;
+    const contact     = document.getElementById('contact').value.trim();
+    const special_req = document.getElementById('special_req').value.trim();
+
+    if (!bride_name || !groom_name || !event_date || !contact) {
+      alert('⚠️ Please fill in Bride Name, Groom Name, Event Date and Contact Number.');
+      return;
+    }
+
+    const btn = document.getElementById('bookingBtn');
+    btn.textContent = '⏳ Submitting...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(BACKEND_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ bride_name, groom_name, event_date, event_type, guests, contact, special_req })
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        document.getElementById('popupBookingId').textContent = 'Booking Reference ID: #' + data.bookingId;
+        document.getElementById('confirmPopup').classList.add('active');
+        // Clear form
+        ['bride_name','groom_name','event_date','guests','contact','special_req'].forEach(id => {
+          document.getElementById(id).value = '';
+        });
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      alert('Could not connect to server. Please try again later.');
+      console.error(err);
+    }
+
+    btn.textContent = '✦ Confirm Booking Request';
+    btn.disabled = false;
+  }
+</script>
+</body>
+</html>
